@@ -44,6 +44,7 @@ export default function Product1() {
               value={size}
               onChange={handleChange}
               label="size"
+              
             >
               <MenuItem value={1}>1 meter</MenuItem>
               <MenuItem value={2}>2 meter</MenuItem>
