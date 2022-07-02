@@ -1,8 +1,8 @@
 import React from "react";
-export default function Product1() {
+export default function Product2() {
     return (
         <div>
-           odifjgrpSofjv
+           222222222222
             </div>
     )
 }
