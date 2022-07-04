@@ -1,0 +1,61 @@
+.header {
+    background-image: url("main.jpg");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    text-align: center;
+    border: 2px solid black
+}
+
+.content {
+    margin: 40px;
+    background-color: #ffffff;
+    opacity: 0.6;
+    margin-left: 20px;
+    margin-right: 20px
+}
+
+.title {
+    margin: 15%;
+    font-size: 80px;
+    color: #000000;
+    text-decoration: none
+}
+
+p {
+    font-weight: bold;
+}
+
+
+.footer {
+    margin-top: 64px;
+
+    background-color: rgb(247, 219, 183);
+}
+
+.icon-connection {
+    text-align: center;
+}
+
+.information {
+    margin-top: 32px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.us {
+
+    margin-bottom: 16px;
+    margin-right: 128px;
+
+}
+
+.address {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 16px;
+
+}
+
+@media screen and (min-width: 600px) {}
