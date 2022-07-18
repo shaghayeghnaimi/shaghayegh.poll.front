@@ -11,12 +11,14 @@ import "./App.css";
 
 export default function App() {
   return (
-    <Router>
-      <div className="header">
-        <div className="content">
-          <Link to="/" className="title">
-            Textile
-          </Link>
+    <Router >
+      <div className="main">
+        <div className="header">
+          <div className="content">
+            <Link to="/" className="title">
+              Textile
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -29,12 +31,11 @@ export default function App() {
 
       <div className="footer">
         <div className="icon-connection">
-          <InstagramIcon sx={{ color: "purple", marginRight: "16px", marginTop:"24px" }} />
-
+          <InstagramIcon
+            sx={{ color: "purple", marginRight: "16px", marginTop: "24px" }}
+          />
           <TelegramIcon sx={{ color: "blue", marginRight: "16px" }} />
-
           <WhatsAppIcon sx={{ color: "green", marginRight: "16px" }} />
-
           <YouTubeIcon sx={{ color: "red", marginRight: "16px" }} />
         </div>
         <div className="information">

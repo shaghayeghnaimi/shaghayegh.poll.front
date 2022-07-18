@@ -4,7 +4,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
-import Product from "./first1.jpg";
+import Product from "./third.jpg";
+import "./Product.css";
 
 export default function Product1() {
   const [size, setSize] = React.useState("");
@@ -16,22 +17,12 @@ export default function Product1() {
   };
 
   return (
-    <div style={{ textAlign: "center", display: "flex", marginTop: "32px" }}>
-      <div style={{ width: "80%" }}>
-        <img src={Product} alt="first Product" />
+    <div className="container">
+      <div className="image">
+        <img className="main-image" src={Product} alt="Product" />
       </div>
-      <div
-        style={{
-          width: "20%",
-          borderRadius: "8px",
-          marginRight: "32px",
-          border: "1px solid grey",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-        }}
-      >
-        <h2>Soimoi Rose Floral Printed</h2>
+      <div className="info">
+        <h2>Soimoi White Cotton Cambric</h2>
         <div style={{ textAlign: "center" }}>
           <FormControl
             variant="standard"
@@ -91,11 +82,11 @@ export default function Product1() {
                 fontWeight: "bold",
               }}
             >
-              12.99$
+              15.99$
             </p>
 
             <p>
-              <del>15.99$</del>
+              <del>18.99$</del>
             </p>
             <p
               style={{
@@ -108,17 +99,11 @@ export default function Product1() {
                 borderRadius: "30px",
               }}
             >
-              20%
+              10%
             </p>
           </div>
-          <Button
-            style={{
-              textAlign: "right",
-              marginLeft: "12px",
-              fontSize: "14px",
-              marginBottom: "16px",
-              marginTop: "16px",
-            }}
+          <Button className="button"
+           
             variant="contained"
           >
             Add to Card
