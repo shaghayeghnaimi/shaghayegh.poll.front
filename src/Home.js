@@ -7,6 +7,67 @@ export default function Home() {
   return (
     <div className="main">
       <div className="container">
+      <div className="product">
+          <div>
+            <Link to="/Product2">
+           
+            </Link>
+          </div>
+          <div>
+            <h2>Soimoi White Cotton Voile</h2>
+            <Rating
+              name="half-rating-read"
+              defaultValue={3.5}
+              precision={0.5}
+              readOnly
+            />
+            <p>
+              we create unique designs with digitally printed fabrics which can
+              help you to create a product we could not have imagined and that's
+              the power of individual thinking by Super minds.
+            </p>
+          </div>
+        </div> <div className="product">
+          <div>
+            <Link to="/Product2">
+           
+            </Link>
+          </div>
+          <div>
+            <h2>Soimoi White Cotton Voile</h2>
+            <Rating
+              name="half-rating-read"
+              defaultValue={3.5}
+              precision={0.5}
+              readOnly
+            />
+            <p>
+              we create unique designs with digitally printed fabrics which can
+              help you to create a product we could not have imagined and that's
+              the power of individual thinking by Super minds.
+            </p>
+          </div>
+        </div> <div className="product">
+          <div>
+            <Link to="/Product2">
+           
+            </Link>
+          </div>
+          <div>
+            <h2>Soimoi White Cotton Voile</h2>
+            <Rating
+              name="half-rating-read"
+              defaultValue={3.5}
+              precision={0.5}
+              readOnly
+            />
+            <p>
+              we create unique designs with digitally printed fabrics which can
+              help you to create a product we could not have imagined and that's
+              the power of individual thinking by Super minds.
+            </p>
+          </div>
+        </div>
         <div className="product">
           <div>
             <Link to="/Product1">

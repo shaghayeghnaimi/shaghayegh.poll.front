@@ -3,6 +3,12 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import TableFooter from '@mui/material/TableFooter';
+import Button from "@mui/material/Button";
 import Home from "./Home";
 import PollList from "./PollList";
 import PollPage from "./PollPage";
@@ -17,56 +23,36 @@ export default function App() {
         <div className="logo">
           <img className="main_image" src={main} alt="logo" />
           <Link to="/" className="title">
-         Easy Poll
-         </Link>
+            Easy Poll
+          </Link>
         </div>
         <div className="content">
-        <Link to="/PollList" className="content-name">
-         Manage Polls
-         </Link>
-         <Link to="/PollPage" className="content-name">
-        Results
-         </Link>
-         <Link to="/PollList" className="content-name">
-         Poll List
-         </Link>
+          <Link to="/PollList" className="content-name">
+            Manage Polls
+          </Link>
+          <Link to="/PollPage" className="content-name">
+            Results
+          </Link>
+          <Link to="/PollList" className="content-name">
+            Poll List
+          </Link>
         </div>
-
-        
+        <div className="button-login">
+          <Button variant="contained">Log in</Button>
+        </div>
+        <div className="button-create">
+        <Button variant="outlined">Create +</Button>
+        </div>
       </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/PollList" element={<PollList />} />
         <Route path="/PollPage" element={<PollPage />} />
-       
       </Routes>
-
-      <div className="footer">
-        <div className="icon-connection">
-          <InstagramIcon
-            sx={{ color: "purple", marginRight: "16px", marginTop: "24px" }}
-          />
-          <TelegramIcon sx={{ color: "blue", marginRight: "16px" }} />
-          <WhatsAppIcon sx={{ color: "green", marginRight: "16px" }} />
-          <YouTubeIcon sx={{ color: "red", marginRight: "16px" }} />
-        </div>
-        <div className="information">
-          <div className="us">
-            <p>َAbout us</p>
-            <p>Contact Us</p>
-          </div>
-          <div className="address">
-            <b>Address:</b>
-            <span>
-              101 Independence Avenue, S.E. Washington, D.C. 20559-6000
-            </span>
-            <br></br>
-            <b>Telephone:</b>
-            <span>(1 202) 707 3000</span>
-          </div>
-        </div>
-      </div>
+      <TableFooter></TableFooter>
+      
+     
     </Router>
   );
 }
