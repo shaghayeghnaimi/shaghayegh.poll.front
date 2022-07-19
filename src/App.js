@@ -12,14 +12,13 @@ export default function App() {
     <Router>
       <div className="header">
         <div className="logo">
-          {" "}
-          <img className="main-image" src={main} alt="logo" />{" "}
-          <span>Easy Poll</span>
+          <img className="main_image" src={main} alt="logo" />
+          <Link to="/" className="title">
+         Easy Poll
+         </Link>
         </div>
 
-        <Link to="/" className="title">
-          Textile
-        </Link>
+        
       </div>
 
       <Routes>
