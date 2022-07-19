@@ -4,6 +4,9 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import Home from "./Home";
+import PollList from "./PollList";
+import PollPage from "./PollPage";
+
 import "./App.css";
 import main from "./main.png";
 
@@ -17,12 +20,26 @@ export default function App() {
          Easy Poll
          </Link>
         </div>
+        <div className="content">
+        <Link to="/PollList" className="content-name">
+         Manage Polls
+         </Link>
+         <Link to="/PollPage" className="content-name">
+        Results
+         </Link>
+         <Link to="/PollList" className="content-name">
+         Poll List
+         </Link>
+        </div>
 
         
       </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/PollList" element={<PollList />} />
+        <Route path="/PollPage" element={<PollPage />} />
+       
       </Routes>
 
       <div className="footer">
