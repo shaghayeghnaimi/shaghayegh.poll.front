@@ -16,6 +16,7 @@
     display: flex;
     align-content: center;margin-left: 30px;
 
+
 }
 
 .title {
@@ -30,6 +31,13 @@ margin-left: 16px;
 .main_image{
 width: 40px;
 
+}
+.content-name{
+    font-size:16px;
+    color: #525050;
+    text-decoration: none;
+    font-family: 'Roboto';
+  
 }
 
 
