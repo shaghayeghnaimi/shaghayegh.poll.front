@@ -1,9 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import firstProduct from "./first.jpg";
-import secondProduct from "./second.jpg";
-import thirdProduct from "./third.jpg";
-import "./Home.css";
 
 import Rating from "@mui/material/Rating";
 
@@ -14,7 +10,7 @@ export default function Home() {
         <div className="product">
           <div>
             <Link to="/Product1">
-              <img className="images" src={firstProduct} alt="first Product" />
+          
             </Link>
           </div>
           <div>
@@ -36,11 +32,7 @@ export default function Home() {
         <div className="product">
           <div>
             <Link to="/Product2">
-              <img
-                className="images"
-                src={secondProduct}
-                alt="second Product"
-              />
+           
             </Link>
           </div>
           <div>
@@ -61,7 +53,7 @@ export default function Home() {
         <div className="product">
           <div>
             <Link to="/Product3">
-              <img className="images" src={thirdProduct} alt="third Product" />
+           
             </Link>
           </div>
           <div>

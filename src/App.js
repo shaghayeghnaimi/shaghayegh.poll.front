@@ -4,29 +4,26 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import Home from "./Home";
-import Product1 from "./Product1";
-import Product2 from "./Product2";
-import Product3 from "./Product3";
 import "./App.css";
+import main from "./main.png";
 
 export default function App() {
   return (
-    <Router >
-      <div className="main">
-        <div className="header">
-          <div className="content">
-            <Link to="/" className="title">
-              Textile
-            </Link>
-          </div>
+    <Router>
+      <div className="header">
+        <div className="logo">
+          {" "}
+          <img className="main-image" src={main} alt="logo" />{" "}
+          <span>Easy Poll</span>
         </div>
+
+        <Link to="/" className="title">
+          Textile
+        </Link>
       </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Product1" element={<Product1 />} />
-        <Route path="/Product2" element={<Product2 />} />
-        <Route path="/Product3" element={<Product3 />} />
       </Routes>
 
       <div className="footer">
