@@ -17,6 +17,9 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
+import 'typeface-roboto'
+import "@fontsource/concert-one";
+import 'typeface-yeseva-one'
 import Home from "./Home";
 import PollList from "./PollList";
 import PollPage from "./PollPage";
@@ -53,14 +56,16 @@ const App = () => {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "yeseva one",
+              mt: 1,
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "black",
               textDecoration: "none",
             }}
           >
-            <Link to="/" className="title">
+           
+            <Link style={{ textDecoration: "none",color: "black", fontSize:"28px"}} to="/" className="title">
               Easy Poll
             </Link>
           </Typography>
@@ -100,7 +105,7 @@ const App = () => {
                   textAlign="center"
                   color="black"
                 >
-                  <Link to="/PollList" className="content-name">
+                  <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}} to="/PollList" className="content-name">
                     Manage Polls
                   </Link>
                 </div>
@@ -111,7 +116,7 @@ const App = () => {
                   textAlign="center"
                   color="black"
                 >
-                  <Link to="/PollPage" className="content-name">
+                  <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}} to="/PollPage" className="content-name">
                     Results
                   </Link>
                 </div>
@@ -122,14 +127,14 @@ const App = () => {
                   textAlign="center"
                   color="black"
                 >
-                  <Link to="/PollList" className="content-name">
+                  <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}} to="/PollList" className="content-name">
                     Poll List
                   </Link>
                 </div>
               </MenuItem>
 
               <hr />
-              <Link to="/Login">
+              <Link style={{ textDecoration: "none", fontFamily:"roboto"}} to="/Login">
                 <Button variant="contained" sx={{ mt: 1, ml: "24px", mb: 2 }}>
                   Log in
                 </Button>
@@ -139,7 +144,7 @@ const App = () => {
 
           <LeaderboardIcon
             style={{ color: "black" }}
-            sx={{ fontSize: 24, display: { xs: "flex", md: "none" }, mt: 1 }}
+            sx={{ fontSize: 24, display: { xs: "flex", md: "none" }}}
           />
 
           <Typography
@@ -149,20 +154,20 @@ const App = () => {
             sx={{
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontSize: "24px",
-              fontFamily: "monospace",
+              fontFamily: "yeseva one",
               fontWeight: 700,
               color: "inherit",
               textDecoration: "none",
+              ml:1
             }}
           >
-            <Link to="/" className="title">
+            <Link style={{ textDecoration: "none",color: "black", fontSize:"24px" }} to="/" className="title">
               Easy Poll
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Create a new poll">
-              <Link to="/PollCreate">
+              <Link style={{ textDecoration: "none",color: "blue", fontFamily:"roboto"}} to="/PollCreate">
                 <Button
                   variant="outlined"
                   sx={{
@@ -178,24 +183,24 @@ const App = () => {
           </Box>
 
           <Box
-            sx={{ flexGrow: 1, display: { xs: "none", md: "inline-block" } }}
+            sx={{ mt: 1,flexGrow: 1, display: { xs: "none", md: "inline-block" } }}
           >
             <Button sx={{ ml: 4 }} onClick={handleCloseNavMenu}>
-              <Link to="/PollList" className="content-name">
+              <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}} to="/PollList" className="content-name">
                 Manage Polls
               </Link>
             </Button>
             <Button sx={{ ml: 2 }} onClick={handleCloseNavMenu}>
-              <Link to="/PollPage" className="content-name">
+              <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}} to="/PollPage" className="content-name">
                 Results
               </Link>
             </Button>
             <Button sx={{ ml: 2 }} onClick={handleCloseNavMenu}>
-              <Link to="/PollList" className="content-name">
+              <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}}to="/PollList" className="content-name">
                 Poll List
               </Link>
             </Button>
-            <Link to="/Login">
+            <Link style={{ textDecoration: "none",color: "white", fontFamily:"roboto"}} to="/Login">
               <Button variant="contained" sx={{ ml: 4 }}>
                 Log in
               </Button>
@@ -204,10 +209,10 @@ const App = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Create a new poll">
-              <Link to="/PollCreate">
+              <Link style={{ textDecoration: "none",color: "blue", fontFamily:"roboto"}} to="/PollCreate">
                 <Button
                   variant="outlined"
-                  sx={{
+                  sx={{mt:1,
                     display: { xs: "none", md: "inline-block" },
                     paddingRight: "16px",
                   }}
