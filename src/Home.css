@@ -1,0 +1,33 @@
+.container{
+    display: flex;
+}
+.main{
+    width: 40%;
+    border-bottom: 1px inset rgba(0, 0, 0, 0.2);
+
+}
+
+.explain{
+    font-size: 42px;
+    font-weight: bold;
+    margin-left: 32px;
+    line-height: 01.6;
+    width: 100%;
+}
+.explain1{
+    font-size: 20px;
+    margin-left: 32px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 32px;
+}
+.main1{
+    width: 60%;
+    border-bottom: 1px inset rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+.main_image{
+    width: 36rem;
+}
