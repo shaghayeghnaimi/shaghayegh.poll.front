@@ -1,33 +1,131 @@
-.container{
+.container {
     display: flex;
 }
-.main{
+
+.main {
     width: 40%;
     border-bottom: 1px inset rgba(0, 0, 0, 0.2);
+ 
 
 }
 
-.explain{
+.explain {
     font-size: 42px;
     font-weight: bold;
     margin-left: 32px;
     line-height: 01.6;
-    width: 100%;
+  
 }
-.explain1{
+
+.explain1 {
     font-size: 20px;
     margin-left: 32px;
     color: rgba(0, 0, 0, 0.6);
     margin-bottom: 32px;
 }
-.main1{
+
+.main1 {
     width: 60%;
     border-bottom: 1px inset rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
 }
-.main_image{
+
+.main_image {
     width: 36rem;
 }
+
+@media only screen and (max-width: 900px) {
+
+    .container {
+        display: block;
+    }
+    
+    .main {
+  width: 100%;
+        border-bottom: 1px inset rgba(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+    
+    .explain {
+        font-size: 42px;
+        font-weight: bold;
+        line-height: 0.8;
+        margin-left: 0;
+    }
+    
+    .explain1 {
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.6);
+        margin-bottom: 16px;
+        margin-left: 0;
+    }
+    
+    .main1 {
+        width: 100%;
+        border-bottom: 1px inset rgba(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    
+    .main_image {
+        width: 36rem;
+    }
+
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .container {
+        display: block;
+    }
+    
+    .main {
+  width: 100%;
+        border-bottom: 1px inset rgba(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .explain {
+        font-size: 36px;
+        font-weight: bold;
+        line-height: 0.6;
+        margin-left: 0;
+    }
+    
+    .explain1 {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.6);
+        margin-bottom: 14px;
+        margin-left: 0;
+    }
+    
+    .main1 {
+        width: 100%;
+        border-bottom: 1px inset rgba(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    
+    .main_image {
+        width: 20rem;
+       
+    }
+  
+
+}
+
