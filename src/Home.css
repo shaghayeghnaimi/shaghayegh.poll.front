@@ -5,7 +5,7 @@
 .main {
     width: 40%;
     border-bottom: 1px inset rgba(0, 0, 0, 0.2);
- 
+
 
 }
 
@@ -14,7 +14,7 @@
     font-weight: bold;
     margin-left: 32px;
     line-height: 01.6;
-  
+
 }
 
 .explain1 {
@@ -37,14 +37,57 @@
     width: 36rem;
 }
 
+.feature1-3 {
+    display: flex;
+    background-color: rgb(213, 255, 247);
+    margin-left: 200px;
+    margin-right: 0;
+
+}
+
+.feature2 {
+    display: flex;
+    margin-right: 200px;
+    background-color: rgb(244, 255, 214);
+}
+
+.content {
+    width: 60%;
+    margin-left: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+h3 {
+    font-size: 28px;
+}
+
+.feature-p {
+    width: 240px;
+    font-size: 20px;
+
+}
+
+.picture {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-img {
+    width: 360px;
+}
+
 @media only screen and (max-width: 900px) {
 
     .container {
         display: block;
     }
-    
+
     .main {
-  width: 100%;
+        width: 100%;
         border-bottom: 1px inset rgba(255, 255, 255);
         display: flex;
         flex-direction: column;
@@ -52,32 +95,73 @@
         align-items: center;
 
     }
-    
+
     .explain {
         font-size: 42px;
         font-weight: bold;
         line-height: 0.8;
         margin-left: 0;
     }
-    
+
     .explain1 {
         font-size: 16px;
         color: rgba(0, 0, 0, 0.6);
         margin-bottom: 16px;
         margin-left: 0;
     }
-    
+
     .main1 {
         width: 100%;
         border-bottom: 1px inset rgba(255, 255, 255);
         display: flex;
         justify-content: center;
         align-items: center;
+
+    }
+
+    .main_image {
+        width: 36rem;
+    }
+    .feature1-3 {
+        display: flex;
+        background-color: rgb(213, 255, 247);
+        margin-left: 80px;
     
     }
     
-    .main_image {
-        width: 36rem;
+    .feature2 {
+        display: flex;
+        margin-right: 80px;
+        background-color: rgb(244, 255, 214);
+    }
+    
+    .content {
+        width: 60%;
+        margin-left: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center
+    }
+    
+    h3 {
+        font-size:24px;
+    }
+    
+    .feature-p {
+        width: 200px;
+        font-size: 16px;
+    
+    }
+    
+    .picture {
+        width: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .feature-img {
+        width: 240px;
     }
 
 }
@@ -88,44 +172,83 @@
     .container {
         display: block;
     }
-    
+
     .main {
-  width: 100%;
+        width: 100%;
         border-bottom: 1px inset rgba(255, 255, 255);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    
+
     .explain {
         font-size: 36px;
         font-weight: bold;
         line-height: 0.6;
         margin-left: 0;
     }
-    
+
     .explain1 {
         font-size: 14px;
         color: rgba(0, 0, 0, 0.6);
         margin-bottom: 14px;
         margin-left: 0;
     }
-    
+
     .main1 {
         width: 100%;
         border-bottom: 1px inset rgba(255, 255, 255);
         display: flex;
         justify-content: center;
         align-items: center;
-    
+
     }
-    
+
     .main_image {
         width: 20rem;
-       
+
     }
-  
 
+    .feature1-3 {
+        display: block;
+        margin-left: 0;
+        background-color: rgb(213, 255, 247);
+    
+    }
+    
+    .feature2 {
+        display: block;
+        margin-right: 0;
+        background-color: rgb(244, 255, 214);
+    }
+    
+    .content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+     
+        align-content: center;
+    }
+    
+    h3 {
+        font-size: 22px;
+    }
+    
+    .feature-p {
+        width: 200px;
+        font-size: 14px;
+    
+    }
+    
+    .picture {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .feature-img {
+        width: 200px;
+    }
 }
-
