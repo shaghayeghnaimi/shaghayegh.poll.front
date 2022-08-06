@@ -4,16 +4,19 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
-import ListItemText from "@mui/material/ListItemText";
 import TextField from "@mui/material/TextField";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
+import "./PollCreate.css"
+
+
 
 
 export default function PollCreate() {
   const [option, setOption] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [desc, setDesc] = React.useState("");
+  const [newDesc, setNewDesc] = React.useState([]);
+  const [newTitle, setNewTitle] = React.useState([]);
   const [newOptions, setNewOptions] = React.useState([]);
 
   const addOption = () => {
@@ -33,11 +36,27 @@ export default function PollCreate() {
     );
   };
 
+  const createPoll = () => {
+    if (desc === "" && title === "") {
+      return;
+    }
+    setNewTitle(() => {
+      return [title];
+    });
+    setNewDesc(() => {
+      return [desc];
+    });
+
+    setDesc("");
+    setTitle("");
+  };
+
   return (
     <div className="create-body">
       <div className="create-container">
+        <h1>New Poll</h1>
         <TextField
-          style={{ width: "100%" }}
+          style={{ width: "100%", marginTop: "64px" ,marginBottom: "32px"}}
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -46,7 +65,7 @@ export default function PollCreate() {
           variant="outlined"
         />
         <TextField
-          style={{ width: "100%" }}
+          style={{ width: "100%", marginBottom: "32px" }}
           required
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
@@ -55,7 +74,7 @@ export default function PollCreate() {
           variant="outlined"
         />
         <TextField
-          style={{ width: "100%" }}
+          style={{ width: "100%" , marginBottom: "32px" }}
           value={option}
           onChange={(e) => setOption(e.target.value)}
           label="Option"
@@ -76,35 +95,38 @@ export default function PollCreate() {
         >
           {newOptions.map((option) => {
             return (
-              <div>
-                <p
-                  secondaryAction={
-                    <IconButton
-                      onClick={deleteOption}
-                      style={{ color: "red" }}
-                      aria-label="delete"
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  }
-                >
-                  <Checkbox key={option} />
-                  {option}
+              <div key={option}>
+                {option}
 
-                  <ListItemText />
-                </p>
+                <IconButton
+                  onClick={() => deleteOption(option)}
+                  style={{ color: "red" }}
+                  edge="end"
+                  aria-label="delete"
+                >
+                  <DeleteIcon />
+                </IconButton>
               </div>
             );
           })}
-          <Button
-            style={{ marginLeft: "15%", color: "blue" }}
-            variant="outlined"
-            // onClick={deleteAll}
-            startIcon={<AddIcon />}
-          >
-            Create
-          </Button>
+
+          {newDesc.map((desc) => {
+            return <div key={desc}>{desc}</div>;
+          })}
+          {newTitle.map((title) => {
+            return <div key={title}>{title}</div>;
+          })}
         </List>
+        <div className="create-button">
+        <Button
+          style={{ color: "blue" }}
+          variant="outlined"
+          onClick={createPoll}
+          startIcon={<AddIcon />}
+        >
+          Create
+        </Button>
+        </div>
       </div>
     </div>
   );
