@@ -17,16 +17,15 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import 'typeface-roboto'
+import "typeface-roboto";
 import "@fontsource/concert-one";
-import 'typeface-yeseva-one'
+import "typeface-yeseva-one";
 import Home from "./Home";
 import PollList from "./PollList";
 import PollPage from "./PollPage";
 import PollCreate from "./PollCreate";
+import PollManage from "./PollManage"
 import Login from "./Login";
-
-
 
 const App = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -39,202 +38,313 @@ const App = () => {
     setAnchorElNav(null);
   };
 
+
+const hideButton = () =>{  const token = localStorage.setItem("token");
+const loginButtonM = document.getElementById("loginButtonM");
+const loginButtonD = document.getElementById("loginButtonD");
+const createButtonD = document.getElementById("createButtonD");
+const createButtonM = document.getElementById("createButtonM");
+
+if(token){
+  loginButtonD.display = "none";
+  loginButtonM.display= "none";
+
+}
+if (!token){
+  createButtonD.display = "none";
+  createButtonM.display= "none";
+}
+}
+
   return (
     <Router>
-    <AppBar position="static" style={{ backgroundColor: "white" }}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <LeaderboardIcon
-            style={{ color: "black" }}
-            sx={{ fontSize: 40, display: { xs: "none", md: "flex" }, mr: 1 }}
-          />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "yeseva one",
-              mt: 1,
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "black",
-              textDecoration: "none",
-            }}
-          >
-           
-            <Link style={{ textDecoration: "none",color: "black", fontSize:"28px"}} to="/" className="title">
-              Easy Poll
-            </Link>
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
+      <AppBar position="static" style={{ backgroundColor: "white" }}>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <LeaderboardIcon
               style={{ color: "black" }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+              sx={{ fontSize: 40, display: { xs: "none", md: "flex" }, mr: 1 }}
+            />
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
               sx={{
-                display: { xs: "block", md: "none" },
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "yeseva one",
+                mt: 1,
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "black",
+                textDecoration: "none",
               }}
             >
-              <MenuItem onClick={handleCloseNavMenu}>
-                <div
-                  style={{ display: "block" }}
-                  textAlign="center"
-                  color="black"
-                >
-                  <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}} to="/PollList" className="content-name">
-                    Manage Polls
-                  </Link>
-                </div>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <div
-                  style={{ display: "block" }}
-                  textAlign="center"
-                  color="black"
-                >
-                  <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}} to="/PollPage" className="content-name">
-                    Results
-                  </Link>
-                </div>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <div
-                  style={{ display: "block" }}
-                  textAlign="center"
-                  color="black"
-                >
-                  <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}} to="/PollList" className="content-name">
-                    Poll List
-                  </Link>
-                </div>
-              </MenuItem>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  fontSize: "28px",
+                }}
+                to="/"
+                className="title"
+              >
+                Easy Poll
+              </Link>
+            </Typography>
 
-              <hr />
-              <Link style={{ textDecoration: "none", fontFamily:"roboto"}} to="/Login">
-                <Button variant="contained" sx={{ mt: 1, ml: "24px", mb: 2 }}>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                style={{ color: "black" }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <div
+                    style={{ display: "block", textAlign:"center" }}
+                    color="black"
+                  >
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "black",
+                        fontFamily: "roboto",
+                      }}
+                      to="/PollManage"
+                      className="content-name"
+                    >
+                      Manage Polls
+                    </Link>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <div
+                    style={{ display: "block" }}
+                    textAlign="center"
+                    color="black"
+                  >
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "black",
+                        fontFamily: "roboto",
+                      }}
+                      to="/PollPage"
+                      className="content-name"
+                    >
+                      Results
+                    </Link>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <div
+                    style={{ display: "block" }}
+                    textAlign="center"
+                    color="black"
+                  >
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "black",
+                        fontFamily: "roboto",
+                      }}
+                      to="/PollList"
+                      className="content-name"
+                    >
+                      Poll List
+                    </Link>
+                  </div>
+                </MenuItem>
+
+                <hr />
+                <Link
+                  style={{ textDecoration: "none", fontFamily: "roboto" }}
+                  to="/Login"
+                >
+                  <Button id="loginButtonM" variant="contained" sx={{ mt: 1, ml: "24px", mb: 2 }}>
+                    Log in
+                  </Button>
+                </Link>
+              </Menu>
+            </Box>
+
+            <LeaderboardIcon
+              style={{ color: "black" }}
+              sx={{ fontSize: 24, display: { xs: "flex", md: "none" } }}
+            />
+
+            <Typography
+              noWrap
+              component="a"
+              href=""
+              sx={{
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "yeseva one",
+                fontWeight: 700,
+                color: "inherit",
+                textDecoration: "none",
+                ml: 1,
+              }}
+            >
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  fontSize: "24px",
+                }}
+                to="/"
+                className="title"
+              >
+                Easy Poll
+              </Link>
+            </Typography>
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Create a new poll">
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "blue",
+                    fontFamily: "roboto",
+                  }}
+                  to="/PollCreate"
+                >
+                  <Button
+                  id = "createButtonM"
+                    variant="outlined"
+                    sx={{
+                      display: { xs: "flex", md: "none" },
+                      pr: "2px",
+                      pl: "2px",
+                    }}
+                  >
+                    +
+                  </Button>
+                </Link>
+              </Tooltip>
+            </Box>
+
+            <Box
+              sx={{
+                mt: 1,
+                flexGrow: 1,
+                display: { xs: "none", md: "inline-block" },
+              }}
+            >
+              <Button sx={{ ml: 4 }} onClick={handleCloseNavMenu}>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    fontFamily: "roboto",
+                  }}
+                  to="/PollManage"
+                  className="content-name"
+                >
+                  Manage Polls
+                </Link>
+              </Button>
+              <Button sx={{ ml: 2 }} onClick={handleCloseNavMenu}>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    fontFamily: "roboto",
+                  }}
+                  to="/PollPage"
+                  className="content-name"
+                >
+                  Results
+                </Link>
+              </Button>
+              <Button sx={{ ml: 2 }} onClick={handleCloseNavMenu}>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    fontFamily: "roboto",
+                  }}
+                  to="/PollList"
+                  className="content-name"
+                >
+                  Poll List
+                </Link>
+              </Button>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  fontFamily: "roboto",
+                }}
+                to="/Login"
+              >
+                <Button id="loginButtonD" variant="contained" sx={{ ml: 4 }}>
                   Log in
                 </Button>
               </Link>
-            </Menu>
-          </Box>
+            </Box>
 
-          <LeaderboardIcon
-            style={{ color: "black" }}
-            sx={{ fontSize: 24, display: { xs: "flex", md: "none" }}}
-          />
-
-          <Typography
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "yeseva one",
-              fontWeight: 700,
-              color: "inherit",
-              textDecoration: "none",
-              ml:1
-            }}
-          >
-            <Link style={{ textDecoration: "none",color: "black", fontSize:"24px" }} to="/" className="title">
-              Easy Poll
-            </Link>
-          </Typography>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Create a new poll">
-              <Link style={{ textDecoration: "none",color: "blue", fontFamily:"roboto"}} to="/PollCreate">
-                <Button
-                  variant="outlined"
-                  sx={{
-                    display: { xs: "flex", md: "none" },
-                    pr: "2px",
-                    pl: "2px",
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Create a new poll">
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "blue",
+                    fontFamily: "roboto",
                   }}
+                  to="/PollCreate"
                 >
-                  +
-                </Button>
-              </Link>
-            </Tooltip>
-          </Box>
-
-          <Box
-            sx={{ mt: 1,flexGrow: 1, display: { xs: "none", md: "inline-block" } }}
-          >
-            <Button sx={{ ml: 4 }} onClick={handleCloseNavMenu}>
-              <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}} to="/PollList" className="content-name">
-                Manage Polls
-              </Link>
-            </Button>
-            <Button sx={{ ml: 2 }} onClick={handleCloseNavMenu}>
-              <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}} to="/PollPage" className="content-name">
-                Results
-              </Link>
-            </Button>
-            <Button sx={{ ml: 2 }} onClick={handleCloseNavMenu}>
-              <Link style={{ textDecoration: "none",color: "black", fontFamily:"roboto"}}to="/PollList" className="content-name">
-                Poll List
-              </Link>
-            </Button>
-            <Link style={{ textDecoration: "none",color: "white", fontFamily:"roboto"}} to="/Login">
-              <Button variant="contained" sx={{ ml: 4 }}>
-                Log in
-              </Button>
-            </Link>
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Create a new poll">
-              <Link style={{ textDecoration: "none",color: "blue", fontFamily:"roboto"}} to="/PollCreate">
-                <Button
-                  variant="outlined"
-                  sx={{mt:1,
-                    display: { xs: "none", md: "inline-block" },
-                    paddingRight: "16px",
-                  }}
-                >
-                  Create +
-                </Button>
-              </Link>
-            </Tooltip>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-    <Routes>
+                  
+                  <Button
+                  id="createButtonD"
+                    variant="outlined"
+                    sx={{
+                      mt: 1,
+                      display: { xs: "none", md: "inline-block" },
+                      paddingRight: "16px",
+                    }}
+                  >
+                    Create +
+                  </Button>
+                </Link>
+              </Tooltip>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/PollList" element={<PollList />} />
         <Route path="/PollPage" element={<PollPage />} />
         <Route path="/PollCreate" element={<PollCreate />} />
+        <Route path="/PollManage" element={<PollManage />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
 
       <div className="footer">
-   
         <div className="icon-connection">
           <InstagramIcon sx={{ marginRight: "16px" }} />
           <TelegramIcon sx={{ marginRight: "16px" }} />
@@ -262,3 +372,17 @@ const App = () => {
   );
 };
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
