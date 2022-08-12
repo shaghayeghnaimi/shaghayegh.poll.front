@@ -24,7 +24,7 @@ import Home from "./Home";
 import PollList from "./PollList";
 import PollPage from "./PollPage";
 import PollCreate from "./PollCreate";
-import PollManage from "./PollManage"
+import PollManage from "./PollManage";
 import Login from "./Login";
 
 const App = () => {
@@ -38,23 +38,7 @@ const App = () => {
     setAnchorElNav(null);
   };
 
-
-const hideButton = () =>{  const token = localStorage.setItem("token");
-const loginButtonM = document.getElementById("loginButtonM");
-const loginButtonD = document.getElementById("loginButtonD");
-const createButtonD = document.getElementById("createButtonD");
-const createButtonM = document.getElementById("createButtonM");
-
-if(token){
-  loginButtonD.display = "none";
-  loginButtonM.display= "none";
-
-}
-if (!token){
-  createButtonD.display = "none";
-  createButtonM.display= "none";
-}
-}
+  const token = window.localStorage.getItem("token");
 
   return (
     <Router>
@@ -62,7 +46,7 @@ if (!token){
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <LeaderboardIcon
-              style={{ color: "black" }}
+              style={{ color: "04485C" }}
               sx={{ fontSize: 40, display: { xs: "none", md: "flex" }, mr: 1 }}
             />
             <Typography
@@ -83,13 +67,14 @@ if (!token){
               <Link
                 style={{
                   textDecoration: "none",
-                  color: "black",
+                  color: "#04485C",
                   fontSize: "28px",
                 }}
                 to="/"
                 className="title"
               >
                 Easy Poll
+              
               </Link>
             </Typography>
 
@@ -104,6 +89,9 @@ if (!token){
               >
                 <MenuIcon />
               </IconButton>
+
+             
+            
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorElNav}
@@ -121,10 +109,12 @@ if (!token){
                 sx={{
                   display: { xs: "block", md: "none" },
                 }}
+                style={{ color: token ? "inline" : "none"}}
+
               >
                 <MenuItem onClick={handleCloseNavMenu}>
                   <div
-                    style={{ display: "block", textAlign:"center" }}
+                    style={{ display: "block", textAlign: "center" }}
                     color="black"
                   >
                     <Link
@@ -132,6 +122,7 @@ if (!token){
                         textDecoration: "none",
                         color: "black",
                         fontFamily: "roboto",
+                        display: token ? "inline" : "none"
                       }}
                       to="/PollManage"
                       className="content-name"
@@ -151,6 +142,7 @@ if (!token){
                         textDecoration: "none",
                         color: "black",
                         fontFamily: "roboto",
+                        display: token ? "inline" : "none"
                       }}
                       to="/PollPage"
                       className="content-name"
@@ -170,6 +162,7 @@ if (!token){
                         textDecoration: "none",
                         color: "black",
                         fontFamily: "roboto",
+                        display: token ? "inline" : "none"
                       }}
                       to="/PollList"
                       className="content-name"
@@ -178,22 +171,12 @@ if (!token){
                     </Link>
                   </div>
                 </MenuItem>
-
-                <hr />
-                <Link
-                  style={{ textDecoration: "none", fontFamily: "roboto" }}
-                  to="/Login"
-                >
-                  <Button id="loginButtonM" variant="contained" sx={{ mt: 1, ml: "24px", mb: 2 }}>
-                    Log in
-                  </Button>
-                </Link>
               </Menu>
             </Box>
 
             <LeaderboardIcon
-              style={{ color: "black" }}
-              sx={{ fontSize: 24, display: { xs: "flex", md: "none" } }}
+              style={{ color: "04485C" }}
+              sx={{ fontSize: 22, display: { xs: "flex", md: "none" } }}
             />
 
             <Typography
@@ -213,8 +196,8 @@ if (!token){
               <Link
                 style={{
                   textDecoration: "none",
-                  color: "black",
-                  fontSize: "24px",
+                  color: "#04485C",
+                  fontSize: "22px",
                 }}
                 to="/"
                 className="title"
@@ -229,22 +212,41 @@ if (!token){
                     textDecoration: "none",
                     color: "blue",
                     fontFamily: "roboto",
+                    display: token ? "inline" : "none"
+
                   }}
                   to="/PollCreate"
                 >
                   <Button
-                  id = "createButtonM"
+                    id="createButtonM"
                     variant="outlined"
                     sx={{
                       display: { xs: "flex", md: "none" },
                       pr: "2px",
                       pl: "2px",
+                      fontSize:"16px"
                     }}
                   >
                     +
                   </Button>
                 </Link>
               </Tooltip>
+              <Link
+style={{
+  textDecoration: "none",
+  fontFamily: "roboto",
+  display: token ? "none" : "block",
+}}
+to="/Login"
+>
+<Button
+  id="loginButtonM"
+  variant="contained"
+  sx={{ mt: 0.5, ml: "px", pl:1, pr:1, fontSize: "10px" }}
+>
+  Log in
+</Button>
+</Link> 
             </Box>
 
             <Box
@@ -254,12 +256,26 @@ if (!token){
                 display: { xs: "none", md: "inline-block" },
               }}
             >
+                 <Link
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  fontFamily: "roboto",
+                  display: token ? "none" : "inline",
+                }}
+                to="/Login"
+              >
+                <Button id="loginButtonD" variant="contained" sx={{ ml: 8}}>
+                  Log in
+                </Button>
+              </Link>
               <Button sx={{ ml: 4 }} onClick={handleCloseNavMenu}>
                 <Link
                   style={{
                     textDecoration: "none",
                     color: "black",
                     fontFamily: "roboto",
+                    display: token ? "inline" : "none"
                   }}
                   to="/PollManage"
                   className="content-name"
@@ -273,6 +289,7 @@ if (!token){
                     textDecoration: "none",
                     color: "black",
                     fontFamily: "roboto",
+                    display: token ? "inline" : "none"
                   }}
                   to="/PollPage"
                   className="content-name"
@@ -286,6 +303,7 @@ if (!token){
                     textDecoration: "none",
                     color: "black",
                     fontFamily: "roboto",
+                    display: token ? "inline" : "none"
                   }}
                   to="/PollList"
                   className="content-name"
@@ -293,18 +311,7 @@ if (!token){
                   Poll List
                 </Link>
               </Button>
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                  fontFamily: "roboto",
-                }}
-                to="/Login"
-              >
-                <Button id="loginButtonD" variant="contained" sx={{ ml: 4 }}>
-                  Log in
-                </Button>
-              </Link>
+           
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
@@ -314,15 +321,14 @@ if (!token){
                     textDecoration: "none",
                     color: "blue",
                     fontFamily: "roboto",
+                    display: token ? "inline" : "none"
                   }}
                   to="/PollCreate"
                 >
-                  
                   <Button
-                  id="createButtonD"
                     variant="outlined"
                     sx={{
-                      mt: 1,
+                      
                       display: { xs: "none", md: "inline-block" },
                       paddingRight: "16px",
                     }}
@@ -382,7 +388,3 @@ export default App;
 
 
 
-
-
-
- 
