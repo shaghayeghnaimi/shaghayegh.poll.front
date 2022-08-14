@@ -242,7 +242,7 @@ to="/Login"
 <Button
   id="loginButtonM"
   variant="contained"
-  sx={{ mt: 0.5, ml: "px", pl:1, pr:1, fontSize: "10px" }}
+  sx={{ mt: 0.5, ml: "px", pl:1, pr:1, fontSize: "10px" ,  display: { xs: "flex", md: "none" },}}
 >
   Log in
 </Button>
@@ -265,7 +265,7 @@ to="/Login"
                 }}
                 to="/Login"
               >
-                <Button id="loginButtonD" variant="contained" sx={{ ml: 8}}>
+                <Button  variant="contained" sx={{ ml: 8, mb: 1}}>
                   Log in
                 </Button>
               </Link>
