@@ -1,6 +1,7 @@
 import React from "react";
+import axios from "axios";
 import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
+ import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -8,43 +9,74 @@ import AddIcon from "@mui/icons-material/Add";
 import "./PollCreate.css";
 
 export default function PollCreate() {
-  const [option, setOption] = React.useState("");
+  const [item, setItem] = React.useState("");
+  const [uniqueLink, setUniqueLink] = React.useState("");
   const [title, setTitle] = React.useState("");
-  const [desc, setDesc] = React.useState("");
-  const [newDesc, setNewDesc] = React.useState([]);
-  const [newTitle, setNewTitle] = React.useState([]);
-  const [newOptions, setNewOptions] = React.useState([]);
+  const [description, setDesc] = React.useState("");
+  const [newItems, setNewItems] = React.useState([]);
 
   const addOption = () => {
-    if (option === "") {
+    if (item === "") {
       return;
     }
-    setNewOptions((item) => {
-      return [...item, option];
+    setNewItems((option) => {
+      return [...option, item];
     });
 
-    setOption("");
+    setItem("");
   };
 
   const deleteOption = (currentOption) => {
-    setNewOptions((options) =>
+    setNewItems((options) =>
       options.filter((option) => currentOption !== option)
     );
   };
+  const dataChoice = {
+    item:item
+  }
+// const dataChoice ={
+//   item: item
+// }
+
+// const createChoice = () =>{
+//     axios
+//       .post("http://localhost:3004/PollChoice", dataChoice)
+//       .then((res) => {
+//         const id = res.choice;
+     
+//       })
+//       .catch((error) => console.log("error :>> ", error));
+
+ 
+// }
+  const dataPoll = {
+    title: title,
+    description: description,
+    link: "jnkbjk.bkjb.kjb"
+  };
+
+  const createUniqueLink = (id) => {
+    return `http://localhost:3004/poll/${id}`;
+  };
 
   const createPoll = () => {
-    if (desc === "" && title === "") {
-      return;
-    }
-    setNewTitle(() => {
-      return [title];
-    });
-    setNewDesc(() => {
-      return [desc];
-    });
+    const token= localStorage.getItem("token");
+if(token){
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+}
+    axios
+      .post("http://localhost:3004/poll/", dataPoll)
+      .then((res) => {
+        const id = res.id;
+        const uniqueLink = createUniqueLink(id);
+        setUniqueLink(uniqueLink);
+      
+      })
+      .catch((error) => console.log("error :>> ", error));
 
     setDesc("");
     setTitle("");
+    setItem("");
   };
 
   return (
@@ -64,7 +96,7 @@ export default function PollCreate() {
           <TextField
             style={{ width: "100%", marginBottom: "32px" }}
             required
-            value={desc}
+            value={description}
             onChange={(e) => setDesc(e.target.value)}
             id="filled-required"
             label="Description"
@@ -72,21 +104,45 @@ export default function PollCreate() {
           />
           <TextField
             style={{ width: "100%", marginBottom: "16px" }}
-            value={option}
-            onChange={(e) => setOption(e.target.value)}
+            value={item}
+            onChange={(e) => setItem(e.target.value)}
             label="Option"
             variant="outlined"
           />
-          <IconButton onClick={addOption} color="primary" style={{marginBottom: " 40PX"}}>
-            <AddCircleIcon  />
+          <IconButton
+            onClick={addOption}
+            color="primary"
+            style={{ marginBottom: " 40PX" }}
+          >
+            <AddCircleIcon />
           </IconButton>
         </div>
+        <div className="create-result">
         <div>
-    
+          {newItems.map((option) => {
+            return (
+              <div key={option}>
+                {option}
+
+                <IconButton
+                  onClick={() => deleteOption(option)}
+                  style={{ color: "red" }}
+                  edge="end"
+                  aria-label="delete"
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </div>
+            );
+          })}
+
+        </div>
+      </div>
+        <div>
           <div className="create-button">
             <Button
-              style={{ color: "blue" }}
-              variant="outlined"
+             
+              variant="contained"
               onClick={createPoll}
               startIcon={<AddIcon />}
             >
@@ -95,33 +151,7 @@ export default function PollCreate() {
           </div>
         </div>
       </div>
-      <div className="create-result">
-      <div>
-        {newOptions.map((option) => {
-          return (
-            <div key={option}>
-              {option}
-
-              <IconButton
-                onClick={() => deleteOption(option)}
-                style={{ color: "red" }}
-                edge="end"
-                aria-label="delete"
-              >
-                <DeleteIcon />
-              </IconButton>
-            </div>
-          );
-        })}
-
-        {newDesc.map((desc) => {
-          return <div key={desc}>{desc}</div>;
-        })}
-        {newTitle.map((title) => {
-          return <div key={title}>{title}</div>;
-        })}
-      </div>
-      </div>
+     
     </div>
   );
 }
