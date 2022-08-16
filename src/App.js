@@ -79,6 +79,7 @@ const App = () => {
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              {token &&
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -89,9 +90,10 @@ const App = () => {
               >
                 <MenuIcon />
               </IconButton>
+}
 
              
-            
+            {token && 
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorElNav}
@@ -109,7 +111,7 @@ const App = () => {
                 sx={{
                   display: { xs: "block", md: "none" },
                 }}
-                style={{ color: token ? "inline" : "none"}}
+                // style={{ color: token ? "inline" : "none"}}
 
               >
                 <MenuItem onClick={handleCloseNavMenu}>
@@ -172,6 +174,7 @@ const App = () => {
                   </div>
                 </MenuItem>
               </Menu>
+}
             </Box>
 
             <LeaderboardIcon
