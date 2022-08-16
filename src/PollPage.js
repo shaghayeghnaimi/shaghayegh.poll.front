@@ -13,11 +13,13 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import axios from "axios";
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "grey",
-    color: theme.palette.common.black,
+    backgroundColor: "#04485C",
+    color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 16,
@@ -28,16 +30,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
 
 export default function PollPage() {
-  const [names, setNames] = useState(["Participant1"]);
-  const [choices, setChoices] = useState(["", ""]);
-  const [items, setItems] = useState(["", ""]);
+  const [names, setNames] = useState([""]);
+  const [choices, setChoices] = useState([]);
+  const [items, setItems] = useState([]);
  
 
   const handleChoices = (value, index) => {
@@ -56,9 +57,13 @@ export default function PollPage() {
     setNames(namesCopy);
   };
 
-  const addNames = () => {
-    setNames(names.concat(""));
-  };
+  // const addChoice = () => {
+  //   axios
+  //   .post("http://localhost:3004/poll/", )
+  //   .then((res) => {
+  //     const data = res.data})
+
+  // };
   return (
     <div style={{ padding: "20px" }}>
       <div className="title-desc-style">
@@ -127,9 +132,9 @@ export default function PollPage() {
       </TableContainer>
       <Button
         variant="contained"
-        color="inherit"
+
         size="medium"
-        onClick={addNames}
+      
       >
         Add
       </Button>
