@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -24,11 +24,12 @@ import Home from "./Home";
 import PollList from "./PollList";
 import PollPage from "./PollPage";
 import PollCreate from "./PollCreate";
-import PollManage from "./PollManage";
 import Login from "./Login";
+import SignUp from "./SignUp";
 
 const App = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [data, getData] = React.useState([]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -38,7 +39,12 @@ const App = () => {
     setAnchorElNav(null);
   };
 
-  const token = window.localStorage.getItem("token");
+  const token = localStorage.getItem("token");
+
+  function logOut() {
+    localStorage.removeItem("token");
+    window.location.reload();
+  }
 
   return (
     <Router>
@@ -74,107 +80,120 @@ const App = () => {
                 className="title"
               >
                 Easy Poll
-              
               </Link>
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              {token &&
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                style={{ color: "black" }}
-              >
-                <MenuIcon />
-              </IconButton>
-}
+              {token && (
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  style={{ color: "black" }}
+                >
+                  <MenuIcon />
+                </IconButton>
+              )}
 
-             
-            {token && 
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-                // style={{ color: token ? "inline" : "none"}}
-
-              >
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <div
-                    style={{ display: "block", textAlign: "center" }}
-                    color="black"
-                  >
-                    <Link
-                      style={{
-                        textDecoration: "none",
-                        color: "black",
-                        fontFamily: "roboto",
-                        display: token ? "inline" : "none"
-                      }}
-                      to="/PollManage"
-                      className="content-name"
+              {token && (
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: "block", md: "none" },
+                  }}
+                  // style={{ color: token ? "inline" : "none"}}
+                >
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <div
+                      style={{ display: "block", textAlign: "center" }}
+                      color="black"
                     >
-                      Manage Polls
-                    </Link>
-                  </div>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <div
-                    style={{ display: "block" }}
-                    textAlign="center"
-                    color="black"
-                  >
-                    <Link
-                      style={{
-                        textDecoration: "none",
-                        color: "black",
-                        fontFamily: "roboto",
-                        display: token ? "inline" : "none"
-                      }}
-                      to="/PollPage"
-                      className="content-name"
+                      <Link
+                        style={{
+                          textDecoration: "none",
+                          color: "black",
+                          fontFamily: "roboto",
+                          display: token ? "inline" : "none",
+                        }}
+                        to="/PollList"
+                        className="content-name"
+                      >
+                        Edit Poll
+                      </Link>
+                    </div>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <div
+                      style={{ display: "block" }}
+                      textAlign="center"
+                      color="black"
                     >
-                      Results
-                    </Link>
-                  </div>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <div
-                    style={{ display: "block" }}
-                    textAlign="center"
-                    color="black"
-                  >
-                    <Link
-                      style={{
-                        textDecoration: "none",
-                        color: "black",
-                        fontFamily: "roboto",
-                        display: token ? "inline" : "none"
-                      }}
-                      to="/PollList"
-                      className="content-name"
+                      <Link
+                        style={{
+                          textDecoration: "none",
+                          color: "black",
+                          fontFamily: "roboto",
+                          display: token ? "inline" : "none",
+                        }}
+                        to="/PollPage"
+                        className="content-name"
+                      >
+                        Results
+                      </Link>
+                    </div>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <div
+                      style={{ display: "block" }}
+                      textAlign="center"
+                      color="black"
                     >
-                      Poll List
+                      <Link
+                        style={{
+                          textDecoration: "none",
+                          color: "black",
+                          fontFamily: "roboto",
+                          display: token ? "inline" : "none",
+                        }}
+                        to="/PollList"
+                        className="content-name"
+                      >
+                        Poll List
+                      </Link>
+                    </div>
+                  </MenuItem>
+                  <hr />
+                  <MenuItem>
+                    <Link style={{ textDecoration: "none" }} to="/">
+                      <Button
+                        style={{
+                          border: "1 px solid blue",
+                          color: "blue",
+                          fontFamily: "roboto",
+                        }}
+                        variant="outline"
+                        onClick={logOut}
+                      >
+                        log Out{" "}
+                      </Button>
                     </Link>
-                  </div>
-                </MenuItem>
-              </Menu>
-}
+                  </MenuItem>
+                </Menu>
+              )}
             </Box>
 
             <LeaderboardIcon
@@ -215,8 +234,7 @@ const App = () => {
                     textDecoration: "none",
                     color: "blue",
                     fontFamily: "roboto",
-                    display: token ? "inline" : "none"
-
+                    display: token ? "inline" : "none",
                   }}
                   to="/PollCreate"
                 >
@@ -227,29 +245,66 @@ const App = () => {
                       display: { xs: "flex", md: "none" },
                       pr: "2px",
                       pl: "2px",
-                      fontSize:"16px"
+                      mt: 4,
+                      fontSize: "16px",
                     }}
                   >
                     +
                   </Button>
                 </Link>
               </Tooltip>
-              <Link
-style={{
-  textDecoration: "none",
-  fontFamily: "roboto",
-  display: token ? "none" : "block",
-}}
-to="/Login"
->
-<Button
-  id="loginButtonM"
-  variant="contained"
-  sx={{ mt: 0.5, ml: "px", pl:1, pr:1, fontSize: "10px" ,  display: { xs: "flex", md: "none" },}}
->
-  Log in
-</Button>
-</Link> 
+              <div className="login-signup">
+                <p>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      fontFamily: "roboto",
+                      display: token ? "none" : "block",
+                    }}
+                    to="/Login"
+                  >
+                    <Button
+                      id="loginButtonM"
+                      variant="contained"
+                      sx={{
+                        mt: 0.5,
+
+                        pl: 1,
+                        pr: 1,
+                        fontSize: "10px",
+                        display: { xs: "flex", md: "none" },
+                      }}
+                    >
+                      Log in
+                    </Button>
+                  </Link>
+                </p>
+                <p>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      fontFamily: "roboto",
+                      display: token ? "none" : "block",
+                    }}
+                    to="/SignUp"
+                  >
+                    <Button
+                      id="loginButtonM"
+                      variant="outline"
+                      sx={{
+                        mt: 0.5,
+                        ml: "8px",
+                        pl: 1,
+                        pr: 1,
+                        fontSize: "10px",
+                        display: { xs: "flex", md: "none" },
+                      }}
+                    >
+                      Sign up
+                    </Button>
+                  </Link>
+                </p>
+              </div>
             </Box>
 
             <Box
@@ -259,7 +314,7 @@ to="/Login"
                 display: { xs: "none", md: "inline-block" },
               }}
             >
-                 <Link
+              <Link
                 style={{
                   textDecoration: "none",
                   color: "white",
@@ -268,8 +323,21 @@ to="/Login"
                 }}
                 to="/Login"
               >
-                <Button  variant="contained" sx={{ ml: 8, mb: 1}}>
+                <Button variant="contained" sx={{ ml: 8, mb: 1 }}>
                   Log in
+                </Button>
+              </Link>
+              <Link
+                style={{
+                  textDecoration: "none",
+
+                  fontFamily: "roboto",
+                  display: token ? "none" : "inline",
+                }}
+                to="/SignUp"
+              >
+                <Button variant="outline" sx={{ ml: 1, mb: 1 }}>
+                  Sign Up
                 </Button>
               </Link>
               <Button sx={{ ml: 4 }} onClick={handleCloseNavMenu}>
@@ -278,12 +346,12 @@ to="/Login"
                     textDecoration: "none",
                     color: "black",
                     fontFamily: "roboto",
-                    display: token ? "inline" : "none"
+                    display: token ? "inline" : "none",
                   }}
-                  to="/PollManage"
+                  to="/PollList"
                   className="content-name"
                 >
-                  Manage Polls
+                  Edit Poll
                 </Link>
               </Button>
               <Button sx={{ ml: 2 }} onClick={handleCloseNavMenu}>
@@ -292,7 +360,7 @@ to="/Login"
                     textDecoration: "none",
                     color: "black",
                     fontFamily: "roboto",
-                    display: token ? "inline" : "none"
+                    display: token ? "inline" : "none",
                   }}
                   to="/PollPage"
                   className="content-name"
@@ -306,7 +374,7 @@ to="/Login"
                     textDecoration: "none",
                     color: "black",
                     fontFamily: "roboto",
-                    display: token ? "inline" : "none"
+                    display: token ? "inline" : "none",
                   }}
                   to="/PollList"
                   className="content-name"
@@ -314,7 +382,20 @@ to="/Login"
                   Poll List
                 </Link>
               </Button>
-           
+              <Link
+                style={{
+                  textDecoration: "none",
+                  fontSize: "16px",
+                  fontFamily: "roboto",
+                  display: token ? "inline" : "none",
+                }}
+                to="/"
+                className="content-name"
+              >
+                <Button variant="contained" sx={{ ml: 2 }} onClick={logOut}>
+                  Log out
+                </Button>
+              </Link>
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
@@ -324,14 +405,13 @@ to="/Login"
                     textDecoration: "none",
                     color: "blue",
                     fontFamily: "roboto",
-                    display: token ? "inline" : "none"
+                    display: token ? "inline" : "none",
                   }}
                   to="/PollCreate"
                 >
                   <Button
                     variant="outlined"
                     sx={{
-                      
                       display: { xs: "none", md: "inline-block" },
                       paddingRight: "16px",
                     }}
@@ -349,8 +429,8 @@ to="/Login"
         <Route path="/PollList" element={<PollList />} />
         <Route path="/PollPage" element={<PollPage />} />
         <Route path="/PollCreate" element={<PollCreate />} />
-        <Route path="/PollManage" element={<PollManage />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/SignUp" element={<SignUp />} />
       </Routes>
 
       <div className="footer">
@@ -381,13 +461,3 @@ to="/Login"
   );
 };
 export default App;
-
-
-
-
-
-
-
-
-
-

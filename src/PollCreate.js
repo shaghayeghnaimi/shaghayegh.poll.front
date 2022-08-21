@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import "./PollCreate.css";
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 export default function PollCreate() {
   const [item, setItem] = React.useState("");
@@ -14,6 +16,7 @@ export default function PollCreate() {
   const [title, setTitle] = React.useState("");
   const [description, setDesc] = React.useState("");
   const [newItems, setNewItems] = React.useState([]);
+  const [err, setErr] = React.useState("");
   const [titleErr, setTitleErr] = React.useState("");
   const [descErr, setDescErr] = React.useState("");
 
@@ -37,7 +40,6 @@ export default function PollCreate() {
   const dataPoll = JSON.stringify({
     title: title,
     description: description,
-    link: "uniqueLink",
   });
 
   const createUniqueLink = (id) => {
@@ -67,12 +69,18 @@ export default function PollCreate() {
     axios(config)
       .then((res) => {
         const id = res.data.insertId;
-        console.log("id :>> ", id);
         createItems(id);
-        const uniqueLink = createUniqueLink(id + 1);
+        const uniqueLink = createUniqueLink(id);
         setUniqueLink(uniqueLink);
       })
-      .catch((error) => console.log("error :>> ", error));
+      .catch((error) => {
+        if (error.response.status === 400) {
+          setErr("Something went wrong! Please Try again");
+          return;
+        } else {
+          console.log("error :>> ", error);
+        }
+      });
 
     setDesc("");
     setTitle("");
@@ -80,11 +88,17 @@ export default function PollCreate() {
   };
   const createItems = (insertId) => {
     const token = localStorage.getItem("token");
-    const myItems = newItems.map((item) => {
-      return { poll_id: insertId, item: item };
+    const myItems = newItems.map((item, index) => {
+      return {
+        poll_id: insertId,
+        item: newItems[index],
+      };
     });
 
-    const config = {
+
+   
+
+    const itemconfig = {
       method: "post",
       url: "http://localhost:3004/choice/",
       headers: {
@@ -93,20 +107,33 @@ export default function PollCreate() {
       },
       data: myItems,
     };
-    axios(config)
+    axios(itemconfig)
       .then((response) => {
         console.log("response :>> ", response);
       })
       .catch((Err) => {
-        console.log("Err :>> ", Err);
+        if (Err.response.status === 400) {
+          setErr("Something went wrong! Please Try again");
+          return;
+        } else {
+          console.log("Err :>> ", Err);
+        }
       });
   };
 
   return (
     <div className="create-body">
+  {uniqueLink && <Alert style={{marginTop:"32px"}} severity="success">
+        <AlertTitle>Yor Poll is created!</AlertTitle>
+        This is your poll Link — <strong>{uniqueLink}</strong>
+      </Alert>}
       <div className="create-field">
-        <div className="create-container">
+    
+   <div className="create-container">
           <h1 className="create-h1">New Poll</h1>
+          <div>
+            <span>{err}</span>
+          </div>
           <TextField
             style={{
               width: "100%",

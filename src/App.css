@@ -1,13 +1,15 @@
+.login-signup {
+    display: flex;
 
-
+}
 
 .footer {
-    margin-top: 64px;
+
     background-color: rgba(243, 253, 255, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    position:static;
+    position: static;
     bottom: 0;
 
 }

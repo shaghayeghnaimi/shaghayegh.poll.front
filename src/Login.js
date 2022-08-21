@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import "./Login.css";
+
 export default function Login() {
   const navigate = useNavigate();
   const [email, setUsername] = useState("");
@@ -26,6 +26,7 @@ export default function Login() {
   };
 
   const login = async () => {
+
     setUserErr("");
     setPassErr("");
     if (email === "" || pass === "") {
@@ -41,8 +42,11 @@ export default function Login() {
         const token = response.data.token;
         if (token) {
           localStorage.setItem("token", token);
+          
           setAuthToken(token);
-          navigate("/PollCreate");
+          navigate("/");
+          window.location.reload();
+
         } else {
           setUsername("");
           setPassword("");
@@ -60,7 +64,9 @@ export default function Login() {
       <div className="login-main">
         <h1 className="login-h1">Log-in to your account</h1>
 
-        <div style={{color:"red", margintop:"32px", textAlign:"center"}}><span >{incorrectUserOrPass}</span></div>
+        <div style={{ color: "red", margintop: "32px", textAlign: "center" }}>
+          <span>{incorrectUserOrPass}</span>
+        </div>
         <form>
           <div className="login-textdiv">
             <p className="login-label">Enter your E-mail</p>
@@ -73,11 +79,10 @@ export default function Login() {
               label="Username"
               variant="outlined"
             />
-
           </div>
-          <div style={{color:"red", marginLeft: "32px", marginTop:"16pxx"}}>
-          <span> {email === "" ? userErr : ""}</span>
-        </div>
+          <div style={{ color: "red", marginLeft: "32px", marginTop: "16pxx" }}>
+            <span> {email === "" ? userErr : ""}</span>
+          </div>
           <div className="login-textdiv">
             <p className="login-label">Enter your password</p>
             <TextField
@@ -91,11 +96,10 @@ export default function Login() {
               variant="outlined"
             />
           </div>
-          <div style={{color:"red", marginLeft: "32px", marginTop:"16pxx"}}>
-          <span> {pass === "" ? passErr : ""}</span>
-        </div>
+          <div style={{ color: "red", marginLeft: "32px", marginTop: "16pxx" }}>
+            <span> {pass === "" ? passErr : ""}</span>
+          </div>
           <div className="login-button">
-        {/* <Link to="/PollCreate"> */}
             <Button
               style={{ width: "100%" }}
               variant="contained"
@@ -103,7 +107,6 @@ export default function Login() {
             >
               Log in
             </Button>
-            {/* </Link> */}
           </div>
         </form>
       </div>

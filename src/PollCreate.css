@@ -1,3 +1,4 @@
+
 .create-field {
     display: flex;
     flex-direction: column;
@@ -5,7 +6,7 @@
     align-items: center;
     border: 1px solid rgb(157, 157, 157);
     border-radius: 16px;
-    margin: 64px
+    margin: 64px; background-color: white;
 }
 
 .create-container {

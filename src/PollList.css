@@ -1,18 +1,27 @@
+
+.list-container{
+  background: white;
+}
+
 h1 {
   text-align: center;
   margin-bottom: 32px;
   margin-top: 40px;
 }
 
+
 tbody {
   align-items: center;
+ 
+  
 }
+
 
 td,
 th {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  width: 23.05%;
+  width: 25.05%;
   padding: 8px;
   text-align: center;
 }
